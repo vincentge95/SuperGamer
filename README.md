@@ -1,9 +1,10 @@
 SuperGamer
 ==========
 
-Chrome extension.
+A chrome extension for SuperGamer bbs.
 
-A block tool for SuperGamer bbs.
-
+Functions:
+==========
 Add username or key word, it will block the threads that the specified users post or have the key words.
+...
 
