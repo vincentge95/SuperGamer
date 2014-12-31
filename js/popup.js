@@ -1,4 +1,10 @@
 document.write("<table id = 'BlackList' border = '1'>");
+document.write("<tr>");
+document.write("<td>ID</td>");
+document.write("<td>关键字</td>");
+document.write("<td>类型</td>");
+document.write("<td><input type = 'button' value = '删除' class = 'deleteInfo' hidden></td>");
+document.write("</tr>");
 if (localStorage.count) {
     for (var i = 0; i < localStorage.count; i++) {
         var info = JSON.parse(localStorage.getItem("BlackList" + i));
@@ -14,7 +20,6 @@ document.write("</table>");
 function addInfo(type) {
     var value = document.getElementById("value").value;
     if (value.length == 0) {
-        alert("输入不能为空");
         return;
     }
     if (!localStorage.count) {
@@ -26,17 +31,18 @@ function addInfo(type) {
     var info = {value: value, type: type};
     var id = Number(localStorage.count) - 1;
     localStorage.setItem("BlackList" + id, JSON.stringify(info));
-    var row = document.getElementById("BlackList").insertRow(id);
+    var row = document.getElementById("BlackList").insertRow(Number(id) + 1);
     row.insertCell(0).innerHTML = id;
     row.insertCell(1).innerHTML = value;
     row.insertCell(2).innerHTML = type;
     row.insertCell(3).innerHTML = "<input type = 'button' value = '删除' class = 'deleteInfo'>";
+
 }
 function deleteInfo(r) {
     var row = r.parentNode.parentNode.rowIndex;
-    for (var i = row; i < Number(localStorage.count) - 1; i++) {
+    for (var i = Number(row) - 1; i < Number(localStorage.count) - 1; i++) {
         localStorage.setItem("BlackList" + i, localStorage.getItem("BlackList" + (Number(i) + 1)));
-        var x = document.getElementById("BlackList").rows[Number(i) + 1].cells[0];
+        var x = document.getElementById("BlackList").rows[Number(i) + 2].cells[0];
         x.innerHTML = i;
     }
     localStorage.removeItem("BlackList" + (Number(localStorage.count) - 1));
@@ -55,6 +61,6 @@ $("#addUser").click(function () {
 $("#addKey").click(function () {
     addKey();
 });
-$(".deleteInfo").click(function () {
+$("#BlackList").on("click", ".deleteInfo", function () {
     deleteInfo(this);
-})
+});
