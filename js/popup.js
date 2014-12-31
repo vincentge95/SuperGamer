@@ -1,6 +1,5 @@
 document.write("<table id = 'BlackList' border = '1'>");
 document.write("<tr>");
-document.write("<td>ID</td>");
 document.write("<td>关键字</td>");
 document.write("<td>类型</td>");
 document.write("<td><input type = 'button' value = '删除' class = 'deleteInfo' hidden></td>");
@@ -9,7 +8,6 @@ if (localStorage.count) {
     for (var i = 0; i < localStorage.count; i++) {
         var info = JSON.parse(localStorage.getItem("BlackList" + i));
         document.write("<tr>");
-        document.write("<td>" + i + "</td>");
         document.write("<td>" + info.value + "</td>");
         document.write("<td>" + info.type + "</td>");
         document.write("<td><input type = 'button' value = '删除' class = 'deleteInfo'></td>");
@@ -32,18 +30,15 @@ function addInfo(type) {
     var id = Number(localStorage.count) - 1;
     localStorage.setItem("BlackList" + id, JSON.stringify(info));
     var row = document.getElementById("BlackList").insertRow(Number(id) + 1);
-    row.insertCell(0).innerHTML = id;
-    row.insertCell(1).innerHTML = value;
-    row.insertCell(2).innerHTML = type;
-    row.insertCell(3).innerHTML = "<input type = 'button' value = '删除' class = 'deleteInfo'>";
+    row.insertCell(0).innerHTML = value;
+    row.insertCell(1).innerHTML = type;
+    row.insertCell(2).innerHTML = "<input type = 'button' value = '删除' class = 'deleteInfo'>";
 
 }
 function deleteInfo(r) {
     var row = r.parentNode.parentNode.rowIndex;
     for (var i = Number(row) - 1; i < Number(localStorage.count) - 1; i++) {
         localStorage.setItem("BlackList" + i, localStorage.getItem("BlackList" + (Number(i) + 1)));
-        var x = document.getElementById("BlackList").rows[Number(i) + 2].cells[0];
-        x.innerHTML = i;
     }
     localStorage.removeItem("BlackList" + (Number(localStorage.count) - 1));
     localStorage.count = Number(localStorage.count) - 1;
