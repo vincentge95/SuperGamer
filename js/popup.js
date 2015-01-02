@@ -17,6 +17,7 @@ if (localStorage.count) {
 document.write("</table>");
 function addInfo(type) {
     var value = document.getElementById("value").value;
+    document.getElementById("value").setAttribute("value", "");
     if(type == "key") {
         value = value.toLowerCase();
     }

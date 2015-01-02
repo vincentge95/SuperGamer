@@ -2,7 +2,7 @@ var table = document.getElementById("threadlisttableid");
 for (var id = 0; id < localStorage.count; id++) {
     var item = JSON.parse(localStorage.getItem("BlackList" + id));
     for (var i = 0; i < table.rows.length; i++) {
-        if (table.rows[i].getAttribute("class") == "ts")
+        if (table.rows[i].hasAttribute("class") && table.rows[i].getAttribute("class") == "ts")
             continue;
         if (item.type == "username") {
             var curUsername = table.rows[i].cells[2].childNodes[1].childNodes[1].innerHTML;
