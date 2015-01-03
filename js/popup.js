@@ -1,6 +1,6 @@
 document.write("<table id = 'BlackList' class = 'table table-bordered'>");
 document.write("<tr>");
-document.write("<td>关键字</td>");
+document.write("<td>文本</td>");
 document.write("<td>类型</td>");
 document.write("<td><input type = 'button' value = '删除' class = 'deleteInfo' hidden></td>");
 document.write("</tr>");
@@ -9,7 +9,7 @@ if (localStorage.count) {
         var info = JSON.parse(localStorage.getItem("BlackList" + i));
         document.write("<tr>");
         document.write("<td>" + info.value + "</td>");
-        if(info.type == "username") {
+        if (info.type == "username") {
             info.type = "用户名"
         }
         else {
@@ -24,7 +24,7 @@ document.write("</table>");
 function addInfo(type) {
     var value = document.getElementById("value").value;
     document.getElementById("value").value = "";
-    if(type == "key") {
+    if (type == "key") {
         value = value.toLowerCase();
     }
     if (value.length == 0) {
@@ -37,11 +37,14 @@ function addInfo(type) {
         localStorage.count = Number(localStorage.count) + 1;
     }
     var info = {value: value, type: type};
+    info = JSON.stringify(info);
     var id = Number(localStorage.count) - 1;
-    localStorage.setItem("BlackList" + id, JSON.stringify(info));
+    localStorage.setItem("BlackList" + id, info);
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('BlackList" + id + "', '" + info + "');"});
     var row = document.getElementById("BlackList").insertRow(Number(id) + 1);
     row.insertCell(0).innerHTML = value;
-    if(type == "username") {
+    if (type == "username") {
         row.insertCell(1).innerHTML = "用户名";
     }
     else {
@@ -55,9 +58,16 @@ function deleteInfo(r) {
     for (var i = Number(row) - 1; i < Number(localStorage.count) - 1; i++) {
         localStorage.setItem("BlackList" + i, localStorage.getItem("BlackList" + (Number(i) + 1)));
     }
-    localStorage.removeItem("BlackList" + (Number(localStorage.count) - 1));
+    var id = (Number(localStorage.count) - 1);
+    localStorage.removeItem("BlackList" + id);
     localStorage.count = Number(localStorage.count) - 1;
     document.getElementById("BlackList").deleteRow(row);
+    chrome.tabs.executeScript(null, {code: "localStorage.clear()"});
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
+    for (var i = 0; i < localStorage.count; i++) {
+        var temp = localStorage.getItem("BlackList" + i);
+        chrome.tabs.executeScript(null, {code: "localStorage.setItem('BlackList" + i + "', '" + temp + "');"});
+    }
 }
 function addUser() {
     addInfo("username");
