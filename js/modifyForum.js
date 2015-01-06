@@ -4,6 +4,8 @@ for (var id = 0; id < localStorage.count; id++) {
     for (var i = 0; i < table.rows.length; i++) {
         if (table.rows[i].hasAttribute("class") && table.rows[i].getAttribute("class") == "ts")
             continue;
+        if(table.rows[i].cells.length == 1)
+            continue;
         if (item.type == "username") {
             var curUsername = table.rows[i].cells[2].childNodes[1].childNodes[1].innerHTML;
             var username = item.value;
