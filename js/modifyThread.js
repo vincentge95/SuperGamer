@@ -52,7 +52,13 @@ if(temp.getAttribute("id") == "threadstamp") {
 temp = temp.children[0].children[0].children[1].children[1].children[1].children[1];
 for (id = 0; id < localStorage.count; id++) {
     item = JSON.parse(localStorage.getItem("BlackList" + id));
-    for (i = 1; i < temp.children.length - 1; i++) {
+    for (i = 1; i < temp.children.length; i++) {
+        if(temp.children[i].getAttribute("class") == "pgs mbm cl"){
+            continue;
+        }
+        if(temp.children[i].getAttribute("class") == "pgs mbm mtn cl") {
+            continue;
+        }
         curUsername = temp.children[i].children[0].children[1].innerHTML;
         if(item.type == "username" && item.value == curUsername){
             temp.children[i].remove();

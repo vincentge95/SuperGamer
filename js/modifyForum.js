@@ -29,3 +29,4 @@ for (var id = 0; id < localStorage.count; id++) {
 if (table.tBodies.length > 0 && table.tBodies[0].getAttribute("id") == "separatorline") {
     table.tBodies[0].remove();
 }
+
