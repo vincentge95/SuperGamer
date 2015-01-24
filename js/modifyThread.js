@@ -31,6 +31,7 @@
                                 var item = JSON.parse(localStorage.getItem("BlackList" + i));
                                 if (item.type == "username" && item.value == curUsername) {
                                     node.remove();
+                                    break;
                                 }
                             }
                         }
@@ -50,6 +51,7 @@
                             var item = JSON.parse(localStorage.getItem("BlackList" + i));
                             if (item.type == "username" && item.value == curUsername) {
                                 node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();;
+                                break;
                             }
                         }
                     }
