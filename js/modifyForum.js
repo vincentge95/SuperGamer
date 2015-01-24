@@ -11,9 +11,7 @@ var observer = new MutationObserver(function(mutations) {
                 if(node.nodeName.toLowerCase() == "tr" && node.children.length == 5) {
                     if(!node.hasAttribute("class")) {
                         var curTopic = $(".s.xst", node).get(0).innerHTML;
-                        console.log(curTopic);
                         var curUsername = $("cite", node).get(0).children[0].innerHTML;
-                        console.log(curUsername);
                         for(var i = 0; i < localStorage.count; i++) {
                             var item = JSON.parse(localStorage.getItem("BlackList" + i));
                             if(item.type == "username") {
