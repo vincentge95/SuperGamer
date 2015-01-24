@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////
 
 
-var observer = new MutationObserver(function (mutations) {
+    var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
         if (mutation.addedNodes) {
             [].slice.call(mutation.addedNodes).forEach(function (node) {
