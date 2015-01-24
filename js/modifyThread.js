@@ -1,79 +1,64 @@
-function modifyComments() {
-    var table = document.getElementById("postlist");
-    var temp = table.children[2].children[0];
-    if(temp.getAttribute("id") == "threadstamp") {
-        temp = table.children[2].children[1];
-    }
-    temp = temp.children[0].children[0].children[1].children[1].children[1].children[1];
-    for (var id = 0; id < localStorage.count; id++) {
-        var item = JSON.parse(localStorage.getItem("BlackList" + id));
-        for (var i = 1; i < temp.children.length - 1; i++) {
-            var curUsername = temp.children[i].children[1].children[0].innerHTML;
-            if(item.type == "username" && item.value == curUsername){
-                temp.children[i].remove();
-                i--;
-            }
+////////////////////////////////////////////////////////////
+//                                                        //
+// block specific users' comments and replies in the thread //
+//                                                        //
+///////////////////////////////////////////////////////////
+
+
+var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+        if (mutation.addedNodes) {
+            [].slice.call(mutation.addedNodes).forEach(function (node) {
+                /////////////////////////////////////
+                // remove specific users' comments //
+                /////////////////////////////////////
+                if (node.nodeName.toLowerCase() == "div") {
+                    if (node.hasAttribute("class")) {
+                        var className = node.getAttribute("class");
+                        var curUsername = "-1.111";
+                        if(className == "pstl xs1 cl") {
+                            if(node.children.length == 2 && node.children[0].children.length == 2) {
+                                curUsername = node.children[0].children[1].innerHTML;
+                            }
+                        }
+                        if(className == "pstl") {
+                            if(node.children.length == 2 && node.children[1].children.length == 2) {
+                                curUsername = node.children[1].children[0].innerHTML;
+                            }
+                        }
+                        if(curUsername != "-1.111") {
+                            for (var i = 0; i < localStorage.count; i++) {
+                                var item = JSON.parse(localStorage.getItem("BlackList" + i));
+                                if (item.type == "username" && item.value == curUsername) {
+                                    node.remove();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                /////////////////////////////////////
+                // remove specific users' replies //
+                /////////////////////////////////////
+                if(node.nodeName.toLowerCase() == "div") {
+                    var curUsername = "-1.111";
+                    if(node.hasAttribute("class") && node.getAttribute("class") == "authi" && node.children.length == 1) {
+                        curUsername = node.children[0].innerHTML;
+                    }
+                    if(curUsername != "-1.111") {
+                        for (var i = 0; i < localStorage.count; i++) {
+                            var item = JSON.parse(localStorage.getItem("BlackList" + i));
+                            if (item.type == "username" && item.value == curUsername) {
+                                node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();;
+                            }
+                        }
+                    }
+                }
+            });
         }
-    }
-}
-var table = document.getElementById("postlist");
-for (var id = 0; id < localStorage.count; id++) {
-    var item = JSON.parse(localStorage.getItem("BlackList" + id));
-    for (var i = 0; i < table.children.length; i++) {
-        if(!table.children[i].hasAttribute("id"))
-            continue;
-        if(table.children[i].getAttribute("id").indexOf("post") != 0 || table.children[i].getAttribute("id") == "postlistreply")
-            continue;
-        var curUsername;
-        var temp = table.children[i].children[0];
-        if(temp.getAttribute("id") == "threadstamp") {
-            temp = table.children[i].children[1];
-        }
-        temp = temp.children[0].children[0].children[0].children[0];
-        if(temp.children[0].hasAttribute("name")) {
-            curUsername = temp.children[1].children[0].children[0].innerHTML;
-        }
-        else {
-            curUsername = temp.children[0].children[0].children[0].innerHTML;
-        }
-        if (item.type == "username") {
-            var username = item.value;
-            if (username == curUsername) {
-                table.children[i].remove();
-                i--;
-            }
-        }
-    }
-}
-temp = table.children[2].children[0];
-if(temp.getAttribute("id") == "threadstamp") {
-    temp = table.children[2].children[1];
-}
-temp = temp.children[0].children[0].children[1].children[1].children[1].children[1];
-for (id = 0; id < localStorage.count; id++) {
-    item = JSON.parse(localStorage.getItem("BlackList" + id));
-    for (i = 1; i < temp.children.length; i++) {
-        if(temp.children[i].getAttribute("class") == "pgs mbm cl"){
-            continue;
-        }
-        if(temp.children[i].getAttribute("class") == "pgs mbm mtn cl") {
-            continue;
-        }
-        curUsername = temp.children[i].children[0].children[1].innerHTML;
-        if(item.type == "username" && item.value == curUsername){
-            temp.children[i].remove();
-            i--;
-        }
-    }
-}
-temp = table.children[2].children[0];
-if(temp.getAttribute("id") == "threadstamp") {
-    temp = table.children[2].children[1];
-}
-temp = temp.children[0].children[0].children[1].children[1].children[1].children[1];
-temp.onclick = function () {
-    modifyComments();
-};
-temp.onmousemove = function () {
-    modifyComments();
-};
+    });
+});
+observer.observe(document, {
+    childList: true,
+    subtree: true
+});

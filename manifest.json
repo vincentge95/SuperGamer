@@ -1,7 +1,7 @@
 {
   "name": "SuperGamer",
   "description": "SuperGamer extension.",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "background": {
     "scripts": ["background.js"]
   },
@@ -21,20 +21,12 @@
       "run_at": "document_end"
     },
     {
-      "matches": ["http://bbs.sgamer.com/forum-*-*.html"],
-      "js": [
-        "js/jquery.js",
-        "js/test.js"
-      ],
-      "run_at": "document_start"
-    },
-    {
       "matches": ["http://bbs.sgamer.com/thread-*-*-*.html"],
       "js": [
         "js/jquery.js",
         "js/modifyThread.js"
       ],
-      "run_at": "document_end"
+      "run_at": "document_start"
     }
   ],
   "browser_action": {
