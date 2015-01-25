@@ -5,6 +5,9 @@ A chrome extension for SuperGamer bbs.
 
 Functions:
 ==========
-Add username or key word, it will block the threads that the specified users post or have the key words.
-...
+Block the specific users' threads or replies.
+
+Block the threads that have specific words.
+
+Hide the medals of users in threads.
 
