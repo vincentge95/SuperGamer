@@ -2,9 +2,6 @@
   "name": "SuperGamer",
   "description": "SuperGamer extension.",
   "version": "1.0.5",
-  "background": {
-    "scripts": ["background.js"]
-  },
   "icons": 
   { 
     "48": "icon48.png",            
