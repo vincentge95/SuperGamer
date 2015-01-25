@@ -1,8 +1,8 @@
-////////////////////////////////////////////////////////////
-//                                                        //
+//////////////////////////////////////////////////////////////
+//                                                          //
 // block specific users' comments and replies in the thread //
-//                                                        //
-///////////////////////////////////////////////////////////
+//                                                          //
+//////////////////////////////////////////////////////////////
 
 
     var observer = new MutationObserver(function (mutations) {
@@ -53,6 +53,17 @@
                                 node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();;
                                 break;
                             }
+                        }
+                    }
+                }
+
+                /////////////////
+                // hide medals //
+                /////////////////
+                if(localStorage.hideMedals == "true") {
+                    if (node.nodeName.toLowerCase() == "p") {
+                        if (node.hasAttribute("class") && node.getAttribute("class") == "md_ctrl") {
+                            node.remove();
                         }
                     }
                 }
