@@ -67,6 +67,17 @@
                         }
                     }
                 }
+
+                ////////////////////
+                // hide signature //
+                ////////////////////
+                if(localStorage.hideSignature == "true") {
+                    if(node.nodeName.toLowerCase() == "div") {
+                        if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
+                            node.remove();
+                        }
+                    }
+                }
             });
         }
     });
