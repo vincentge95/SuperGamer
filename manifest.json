@@ -21,7 +21,7 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["http://bbs.sgamer.com/thread-*-*-*.html"],
+      "matches": ["http://bbs.sgamer.com/thread-*-*-*.html","http://bbs.sgamer.com/forum.php*"],
       "js": [
         "js/jquery.js",
         "js/modifyThread.js"
