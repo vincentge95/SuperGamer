@@ -1,11 +1,24 @@
-//////////////////////////////////////////////////////////////
-//                                                          //
-// block specific users' comments and replies in the thread //
-//                                                          //
-//////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+//                                                           //
+// block specific users' comments and replies in the thread  //
+// block specific users groups' replies                      //
+// hide medals and signatures                                //
+//                                                           //
+///////////////////////////////////////////////////////////////
 
 
-    var observer = new MutationObserver(function (mutations) {
+var userGroupsUrl = [
+    "home.php?mod=spacecp&ac=usergroup&gid=10",
+    "home.php?mod=spacecp&ac=usergroup&gid=11",
+    "home.php?mod=spacecp&ac=usergroup&gid=12",
+    "home.php?mod=spacecp&ac=usergroup&gid=13",
+    "home.php?mod=spacecp&ac=usergroup&gid=14",
+    "home.php?mod=spacecp&ac=usergroup&gid=15",
+    "home.php?mod=spacecp&ac=usergroup&gid=20"
+];
+
+
+var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
         if (mutation.addedNodes) {
             [].slice.call(mutation.addedNodes).forEach(function (node) {
@@ -68,13 +81,31 @@
                     }
                 }
 
-                ////////////////////
-                // hide signature //
-                ////////////////////
+                /////////////////////
+                // hide signatures //
+                /////////////////////
                 if(localStorage.hideSignature == "true") {
                     if(node.nodeName.toLowerCase() == "div") {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
                             node.remove();
+                        }
+                    }
+                }
+
+                /////////////////////////////////////////
+                // block specific user groups' replies //
+                /////////////////////////////////////////
+                if(localStorage.blockUserGroups == "true") {
+                    if(node.nodeName.toLowerCase() == "a" && node.hasAttribute("href")) {
+                        var href = node.getAttribute("href");
+                        if(href.indexOf("home.php?mod=spacecp&ac=usergroup&gid") == 0) {
+                            if(node.children.length > 0) {
+                                for (var i = 0; i <= localStorage.userGroups; i++) {
+                                    if (href == userGroupsUrl[i]) {
+                                        node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                                    }
+                                }
+                            }
                         }
                     }
                 }

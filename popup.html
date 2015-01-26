@@ -1,28 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="js/jquery.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style>body {
-        width: 280px;
-    } </style>
+    <style>
+        body {
+            width: 280px;
+        }
+        .form-group {
+            float: left;
+        }
+        .form-control {
+            height: 20px;
+            float: left;
+            padding: 0px 0px;
+        }
+    </style>
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">杂</a></li>
-    <li role="presentation"><a href="html/block.html">黑名单</a></li>
-</ul>
-<div class="checkbox">
-    <label>
-        <input type="checkbox" id = "hideMedals"> 隐藏勋章
-    </label>
-    <label>
-        <input type="checkbox" id = "hideSignature"> 隐藏签名
-    </label>
+<div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">杂</a></li>
+        <li role="presentation"><a href="html/block.html">黑名单</a></li>
+    </ul>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" id="hideMedals"> 隐藏勋章
+        </label>
+        <label>
+            <input type="checkbox" id="hideSignature"> 隐藏签名
+        </label>
+    </div>
+    <form class="form-inline" role="form">
+        <div class="form-group" style="padding-top: 7px; padding-right: 7px">
+            <input type="checkbox" id="blockUserGroups">
+        </div>
+        <div class="form-group">
+            <p class="form-control-static">屏蔽用户等级小于等于</p>
+        </div>
+        <div class="form-group" style="padding-top: 7px;">
+            <select class="form-control" id="userGroups">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <p class="form-control-static">的回复</p>
+        </div>
+    </form>
+    <script src="js/popup.js"></script>
 </div>
-<script src="js/popup.js"></script>
 </body>
 </html>
