@@ -100,9 +100,15 @@ var observer = new MutationObserver(function (mutations) {
                         var href = node.getAttribute("href");
                         if(href.indexOf("home.php?mod=spacecp&ac=usergroup&gid") == 0) {
                             if(node.children.length > 0) {
-                                for (var i = 0; i <= localStorage.userGroups; i++) {
-                                    if (href == userGroupsUrl[i]) {
-                                        node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                                if($("strong", node.parentElement.parentElement.parentElement.parentElement.children[1].children[0]).get(0).children[0].innerText == "楼主") {
+                                    // do not remove the host of thread.
+                                    console.log("test");
+                                }
+                                else {
+                                    for (var i = 0; i <= localStorage.userGroups; i++) {
+                                        if (href == userGroupsUrl[i]) {
+                                            node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                                        }
                                     }
                                 }
                             }
