@@ -43,7 +43,7 @@ var observer = new MutationObserver(function (mutations) {
                             for (var i = 0; i < localStorage.count; i++) {
                                 var item = JSON.parse(localStorage.getItem("BlackList" + i));
                                 if (item.type == "username" && item.value == curUsername) {
-                                    node.remove();
+                                    $(node).hide();
                                     break;
                                 }
                             }
@@ -54,6 +54,7 @@ var observer = new MutationObserver(function (mutations) {
                 /////////////////////////////////////
                 // remove specific users' replies //
                 /////////////////////////////////////
+
                 if(node.nodeName.toLowerCase() == "div") {
                     var curUsername = "-1.111";
                     if(node.hasAttribute("class") && node.getAttribute("class") == "authi" && node.children.length == 1) {
@@ -63,31 +64,9 @@ var observer = new MutationObserver(function (mutations) {
                         for (var i = 0; i < localStorage.count; i++) {
                             var item = JSON.parse(localStorage.getItem("BlackList" + i));
                             if (item.type == "username" && item.value == curUsername) {
-                                node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();;
+                                $(node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).hide();;
                                 break;
                             }
-                        }
-                    }
-                }
-
-                /////////////////
-                // hide medals //
-                /////////////////
-                if(localStorage.hideMedals == "true") {
-                    if (node.nodeName.toLowerCase() == "p") {
-                        if (node.hasAttribute("class") && node.getAttribute("class") == "md_ctrl") {
-                            node.remove();
-                        }
-                    }
-                }
-
-                /////////////////////
-                // hide signatures //
-                /////////////////////
-                if(localStorage.hideSignature == "true") {
-                    if(node.nodeName.toLowerCase() == "div") {
-                        if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
-                            node.remove();
                         }
                     }
                 }
@@ -102,16 +81,37 @@ var observer = new MutationObserver(function (mutations) {
                             if(node.children.length > 0) {
                                 if($("strong", node.parentElement.parentElement.parentElement.parentElement.children[1].children[0]).get(0).children[0].innerText == "楼主") {
                                     // do not remove the host of thread.
-                                    console.log("test");
                                 }
                                 else {
                                     for (var i = 0; i <= localStorage.userGroups; i++) {
                                         if (href == userGroupsUrl[i]) {
-                                            node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                                            $(node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).hide();
                                         }
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+
+                /////////////////
+                // hide medals //
+                /////////////////
+                if(localStorage.hideMedals == "true") {
+                    if (node.nodeName.toLowerCase() == "p") {
+                        if (node.hasAttribute("class") && node.getAttribute("class") == "md_ctrl") {
+                            $(node).hide();
+                        }
+                    }
+                }
+
+                /////////////////////
+                // hide signatures //
+                /////////////////////
+                if(localStorage.hideSignature == "true") {
+                    if(node.nodeName.toLowerCase() == "div") {
+                        if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
+                            $(node).hide();
                         }
                     }
                 }

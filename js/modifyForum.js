@@ -16,13 +16,13 @@ var observer = new MutationObserver(function(mutations) {
                             var item = JSON.parse(localStorage.getItem("BlackList" + i));
                             if(item.type == "username") {
                                 if(item.value == curUsername) {
-                                    node.parentElement.remove();
+                                    $(node.parentElement).hide();
                                     break;
                                 }
                             }
                             if(item.type == "key") {
                                 if(curTopic.toLowerCase().indexOf(item.value) >= 0) {
-                                    node.parentElement.remove();
+                                    $(node.parentElement).hide();
                                     break;
                                 }
                             }
