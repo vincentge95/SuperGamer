@@ -79,8 +79,9 @@ var observer = new MutationObserver(function (mutations) {
                         var href = node.getAttribute("href");
                         if(href.indexOf("home.php?mod=spacecp&ac=usergroup&gid") == 0) {
                             if(node.children.length > 0) {
-                                if($("strong", node.parentElement.parentElement.parentElement.parentElement.children[1].children[0]).get(0).children[0].innerText == "楼主") {
-                                    // do not remove the host of thread.
+                                var dom = $("a[onclick=\"setCopy(this.href, '帖子地址复制成功');return false;\"]", node.parentElement.parentElement.parentElement.parentElement).get(0)
+                                if(dom != undefined && dom.innerText == "楼主") {
+                                    // do not remove the host of thread.`   1`1`1
                                 }
                                 else {
                                     for (var i = 0; i <= localStorage.userGroups; i++) {
