@@ -16,7 +16,7 @@
       "matches": ["http://bbs.sgamer.com/forum-*-*.html", "http://bbs.sgamer.com/forum.php?mod=forumdisplay*"],
       "js": [
         "js/jquery.js",
-        "js/modifyForum.js"
+        "js/ModifyForum.js"
       ],
       "run_at": "document_start"
     },
@@ -24,7 +24,7 @@
       "matches": ["http://bbs.sgamer.com/thread-*-*-*.html","http://bbs.sgamer.com/forum.php?mod=viewthread*"],
       "js": [
         "js/jquery.js",
-        "js/modifyThread.js"
+        "js/ModifyThread.js"
       ],
       "run_at": "document_start"
     }
@@ -35,7 +35,14 @@
   },
   "permissions": [
     "tabs",
+    "webRequest",
+    "webRequestBlocking",
     "http://bbs.sgamer.com/"
+  ],
+  "web_accessible_resources": [
+    "js/ExtraEmotionVar.js",
+    "js/ExtraEmotion.js",
+    "js/bbcode.js"
   ],
   "manifest_version": 2
 }

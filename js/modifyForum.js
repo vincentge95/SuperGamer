@@ -10,8 +10,6 @@ var observer = new MutationObserver(function(mutations) {
             [].slice.call(mutation.addedNodes).forEach(function(node) {
                 if(node.nodeName.toLowerCase() == "tr" && node.children.length == 5) {
                     if(!node.hasAttribute("class") && node.innerText != "" && node.children[1].nodeName.toLowerCase() == "th") {
-                        var topic = $(".s.xst", node).get(0);
-                        var username = $("cite", node).get(0);
                         var curTopic = $(".s.xst", node).get(0).innerHTML;
                         var curUsername = $("cite", node).get(0).children[0].innerHTML;
                         for(var i = 0; i < localStorage.count; i++) {
