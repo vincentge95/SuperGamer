@@ -22,6 +22,14 @@ chrome.webRequest.onBeforeRequest.addListener(
 function checkForValidUrl(tabId, changeInfo, tab) {
     if (tab.url.indexOf("http://bbs.sgamer.com/") == 0) {
         chrome.pageAction.show(tabId);
+        if(changeInfo.status == "loading") {
+            chrome.tabs.executeScript(tabId, {code: "localStorage.clear();"});
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                chrome.tabs.executeScript(tabId, {code: "localStorage.setItem('" + key + "', '" + value + "');"});
+            }
+        }
     }
 };
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
