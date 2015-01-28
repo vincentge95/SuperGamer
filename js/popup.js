@@ -1,3 +1,4 @@
+
 /////////////////
 // hide medals //
 /////////////////
@@ -13,9 +14,11 @@ $("#hideMedals").click(function() {
     var temp;
     if(hideMedals.hasAttribute("checked")) {
         temp = "false";
+        hideMedals.removeAttribute("checked");
     }
     else {
         temp = "true";
+        hideMedals.setAttribute("checked", "");
     }
     localStorage.setItem("hideMedals", temp);
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideMedals', " + temp + ");"});
@@ -36,9 +39,11 @@ $("#hideSignature").click(function() {
     var temp;
     if(hideSignature.hasAttribute("checked")) {
         temp = "false";
+        hideSignature.removeAttribute("checked");
     }
     else {
         temp = "true";
+        hideSignature.setAttribute("checked", "");
     }
     localStorage.setItem("hideSignature", temp);
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideSignature', " + temp + ");"});
@@ -63,15 +68,16 @@ else {
     blockUserGroups.checked = false;
     userGroups.disabled = true;
 }
+// checked will modify automatically
 $("#blockUserGroups").click(function() {
     var temp;
     if(blockUserGroups.checked) {
-        userGroups.disabled = false;
         temp = "true";
+        userGroups.disabled = false;
     }
     else {
-        userGroups.disabled = true;
         temp = "false";
+        userGroups.disabled = true;
     }
     localStorage.setItem("blockUserGroups", temp);
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('blockUserGroups', " + temp + ");"});

@@ -62,7 +62,6 @@ function deleteInfo(r) {
     localStorage.removeItem("BlackList" + id);
     localStorage.count = Number(localStorage.count) - 1;
     document.getElementById("BlackList").deleteRow(row);
-    chrome.tabs.executeScript(null, {code: "localStorage.clear()"});
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
     for (var i = 0; i < localStorage.count; i++) {
         var temp = localStorage.getItem("BlackList" + i);
