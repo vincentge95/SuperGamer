@@ -3,6 +3,8 @@ SuperGamer
 
 A chrome extension for SuperGamer bbs.
 
+javascript + jQuery + bootstrap + discuz
+
 Functions:
 ==========
 Block the specific users' threads or replies.
