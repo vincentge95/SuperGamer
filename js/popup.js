@@ -1,4 +1,16 @@
 
+
+//////////////////////////////////////////
+// copy user data from extension to web //
+//////////////////////////////////////////
+for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('" + key + "', '" + value + "');"});
+}
+
+
+
 /////////////////
 // hide medals //
 /////////////////
