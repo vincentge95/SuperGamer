@@ -22,7 +22,7 @@ if (localStorage.count) {
 }
 document.write("</table>");
 function addInfo(type) {
-    var value = document.getElementById("value").value;
+    var value = $.trim(document.getElementById("value").value);
     document.getElementById("value").value = "";
     if (type == "key") {
         value = value.toLowerCase();
