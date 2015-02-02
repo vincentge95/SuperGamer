@@ -5,7 +5,11 @@ A chrome extension for SuperGamer bbs.
 
 javascript + jQuery + bootstrap + discuz
 
-Functions:
+Installation
+==========
+https://chrome.google.com/webstore/detail/supergamer/knhlcbpfhhmeijoeiipjgknjbjenddoa
+
+Functions
 ==========
 Block the specific users' threads or replies.
 
@@ -18,4 +22,8 @@ Hide the signatures of users in threads.
 Block all replies of users that users' level is under a value.
 
 Supply Acfun extra emotions.
+
+License
+=========
+Copyright (c) 2014-2015 xxsYuyuko. Licensed under the MIT license.
 
