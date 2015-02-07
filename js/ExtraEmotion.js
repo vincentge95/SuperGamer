@@ -93,6 +93,7 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 		}
 		s = smilies_array[type][page][i];
 		smilieimg = STATICURL + 'image/smiley/' + smilies_type['_' + type][1] + '/' + s[2];
+		var fastpost = s[1].replace(/'/, '\\\'');
 		var count;
 		if(page == 2) {
 			count = Number(k) + 41;
@@ -109,14 +110,10 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 				if (count < 10) smilieimg += "0";
 				smilieimg += count;
 			}
-
+			fastpost = "[img]" + smilieimg + "[/img]";
 		}
 		img[k] = new Image();
 		img[k].src = smilieimg;
-		var fastpost = s[1].replace(/'/, '\\\'');
-		if(type == 7) {
-			fastpost = "[img]" + smilieimg + "[/img]";
-		}
 		smiliesdata += s && s[0] ? '<td onmouseover="smilies_preview(\'' + seditorkey + '\', \'' + id + '\', this, ' + s[5] + ')" onclick="' + (typeof wysiwyg != 'undefined' ? 'insertSmiley(' + s[0] + ')': 'seditor_insertunit(\'' + seditorkey + '\', \'' + fastpost + '\')') +
 			'" id="' + seditorkey + 'smilie_' + s[0] + '_td"><img id="smilie_' + s[0] + '" width="' + s[3] +'" height="' + s[4] +'" src="' + smilieimg + '" alt="' + s[1] + '" />' : '<td>';
 		j++;k++;
