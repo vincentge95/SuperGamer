@@ -726,16 +726,8 @@ function simpletag(options, text, tagname, parseto) {
 
 function smileycode(smileysrc, smileyid) {
     if (typeof smilies_type != 'object') return;
-    if(smileysrc.indexOf("sg-Ac") >= 0) {
-        var typeid = 7;
-            for (var page in smilies_array[typeid]) {
-                for (var i in smilies_array[typeid][page]) {
-                    if (smilies_array[typeid][page][i][0] == smileyid) {
-                        return "[img]" + smilies_array[typeid][page][i][1] + "[/img]";
-                        break;
-                    }
-                }
-        }
+    if(smileysrc.indexOf("dwz.cn") >= 0) {
+        return "[img]" + smileysrc + "[/img]";
     }
     for(var typeid in smilies_array) {
         for (var page in smilies_array[typeid]) {
