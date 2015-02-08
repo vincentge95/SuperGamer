@@ -727,7 +727,7 @@ function simpletag(options, text, tagname, parseto) {
 function smileycode(smileysrc, smileyid) {
     if (typeof smilies_type != 'object') return;
     if(smileysrc.indexOf("dwz.cn") >= 0) {
-        return "[img]" + smileysrc + "[/img]";
+        return smileysrc;
     }
     for(var typeid in smilies_array) {
         for (var page in smilies_array[typeid]) {
