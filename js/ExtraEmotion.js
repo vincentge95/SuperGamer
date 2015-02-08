@@ -94,7 +94,7 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 		s = smilies_array[type][page][i];
 		smilieimg = STATICURL + 'image/smiley/' + smilies_type['_' + type][1] + '/' + s[2];
 		var fastpost = s[1].replace(/'/, '\\\'');
-		if(type == 7) {
+		if(type == 7 || type == 8) {
 			smilieimg = s[1];
 			fastpost = "[img]" + smilieimg + "[/img]";
 		}
