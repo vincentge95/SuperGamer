@@ -1,6 +1,7 @@
 var smthumb = '20';
 var smilies_type = new Array();
-smilies_type['_7'] = ['AC娘', 'mk'];
+smilies_type['_7'] = ['AC娘', 'acfun'];
+smilies_type['_8'] = ['潘斯特', 'pst']
 smilies_type['_5'] = ['嘻哈猴', 'mk'];
 smilies_type['_4'] = ['默认', 'comcom'];
 smilies_type['_1'] = ['兔基斯', 'default'];
@@ -9,6 +10,74 @@ smilies_type['_3'] = ['呆呆男', 'grapeman'];
 smilies_type['_6'] = ['洋葱头', 'yct'];
 var smilies_array = new Array();
 var smilies_fast = new Array();
+smilies_array[8] = new Array();
+smilies_array[8][1] = [
+    ['168', 'http://dwz.cn/sg-pst-01','a013.gif','20','20','50'],
+    ['182', 'http://dwz.cn/sg-pst-02','a026.gif','20','20','50'],
+    ['183', 'http://dwz.cn/sg-pst-03','a027.gif','20','20','50'],
+    ['184', 'http://dwz.cn/sg-pst-04','a028.gif','20','20','50'],
+    ['185', 'http://dwz.cn/sg-pst-05','a029.gif','20','20','50'],
+    ['186', 'http://dwz.cn/sg-pst-06','a030.gif','20','20','50'],
+    ['187', 'http://dwz.cn/sg-pst-07','a031.gif','20','20','50'],
+    ['188', 'http://dwz.cn/BtOWv','a033.gif','20','20','50'],
+    ['189', 'http://dwz.cn/sg-pst-x09','a034.gif','20','20','50'],
+    ['190', 'http://dwz.cn/sg-pst-10','a035.gif','20','20','50'],
+    ['191', 'http://dwz.cn/sg-pst-11','a036.gif','20','20','50'],
+    ['192', 'http://dwz.cn/sg-pst-12','a037.gif','20','20','50'],
+    ['193', 'http://dwz.cn/sg-pst-13','a038.gif','20','20','50'],
+    ['194', 'http://dwz.cn/sg-pst-14','a039.gif','20','20','50'],
+    ['195', 'http://dwz.cn/sg-pst-15','a040.gif','20','20','50'],
+    ['196', 'http://dwz.cn/sg-pst-16','a041.gif','20','20','50'],
+    ['197', 'http://dwz.cn/sg-pst-17','a042.gif','20','20','50'],
+    ['198', 'http://dwz.cn/sg-pst-18','a043.gif','20','20','50'],
+    ['199', 'http://dwz.cn/sg-pst-19','a044.gif','20','20','50'],
+    ['200', 'http://dwz.cn/sg-pst-20','a045.gif','20','20','50'],
+    ['201', 'http://dwz.cn/sg-pst-21','a046.gif','20','20','50'],
+    ['202', 'http://dwz.cn/sg-pst-22','a047.gif','20','20','50'],
+    ['203', 'http://dwz.cn/sg-pst-23','a048.gif','20','20','50'],
+    ['204', 'http://dwz.cn/sg-pst-24','a049.gif','20','20','50'],
+    ['205', 'http://dwz.cn/sg-pst-25','a050.gif','20','20','50'],
+    ['206', 'http://dwz.cn/sg-pst-26','a051.gif','20','20','50'],
+    ['207', 'http://dwz.cn/sg-pst-27','a052.gif','20','20','50'],
+    ['208', 'http://dwz.cn/sg-pst-28','a053.gif','20','20','50'],
+    ['209', 'http://dwz.cn/sg-pst-29','a054.gif','20','20','50'],
+    ['210', 'http://dwz.cn/sg-pst-30','a055.gif','20','20','50'],
+    ['211', 'http://dwz.cn/sg-pst-31','a056.gif','20','20','50'],
+    ['212', 'http://dwz.cn/sg-pst-32','a057.gif','20','20','50'],
+    ['213', 'http://dwz.cn/sg-pst-33','a058.gif','20','20','50'],
+    ['214', 'http://dwz.cn/sg-pst-34','a059.gif','20','20','50'],
+    ['215', 'http://dwz.cn/sg-pst-35','a060.gif','20','20','50'],
+    ['216', 'http://dwz.cn/sg-pst-36','a061.gif','20','20','50'],
+    ['217', 'http://dwz.cn/sg-pst-37','a062.gif','20','20','50'],
+    ['218', 'http://dwz.cn/sg-pst-38','a063.gif','20','20','50'],
+    ['219', 'http://dwz.cn/sg-pst-39','a064.gif','20','20','50'],
+    ['220', 'http://dwz.cn/sg-pst-40','a065.gif','20','20','50']];
+smilies_array[8][2] = [
+    ['168', 'http://dwz.cn/sg-pst-41','a013.gif','20','20','50'],
+    ['182', 'http://dwz.cn/sg-pst-42','a026.gif','20','20','50'],
+    ['183', 'http://dwz.cn/sg-pst-43','a027.gif','20','20','50'],
+    ['184', 'http://dwz.cn/sg-pst-44','a028.gif','20','20','50'],
+    ['185', 'http://dwz.cn/sg-pst-45','a029.gif','20','20','50'],
+    ['186', 'http://dwz.cn/sg-pst-46','a030.gif','20','20','50'],
+    ['187', 'http://dwz.cn/sg-pst-47','a031.gif','20','20','50'],
+    ['188', 'http://dwz.cn/sg-pst-48','a033.gif','20','20','50'],
+    ['189', 'http://dwz.cn/sg-pst-49','a034.gif','20','20','50'],
+    ['190', 'http://dwz.cn/sg-pst-50','a035.gif','20','20','50'],
+    ['191', 'http://dwz.cn/sg-pst-51','a036.gif','20','20','50'],
+    ['192', 'http://dwz.cn/sg-pst-52','a037.gif','20','20','50'],
+    ['193', 'http://dwz.cn/sg-pst-53','a038.gif','20','20','50'],
+    ['194', 'http://dwz.cn/sg-pst-54','a039.gif','20','20','50'],
+    ['195', 'http://dwz.cn/sg-pst-55','a040.gif','20','20','50'],
+    ['196', 'http://dwz.cn/sg-pst-56','a041.gif','20','20','50'],
+    ['197', 'http://dwz.cn/sg-pst-57','a042.gif','20','20','50'],
+    ['198', 'http://dwz.cn/sg-pst-58','a043.gif','20','20','50'],
+    ['199', 'http://dwz.cn/sg-pst-59','a044.gif','20','20','50'],
+    ['200', 'http://dwz.cn/sg-pst-60','a045.gif','20','20','50'],
+    ['201', 'http://dwz.cn/sg-pst-61','a046.gif','20','20','50'],
+    ['202', 'http://dwz.cn/sg-pst-62','a047.gif','20','20','50'],
+    ['203', 'http://dwz.cn/sg-pst-63','a048.gif','20','20','50'],
+    ['204', 'http://dwz.cn/sg-pst-64','a049.gif','20','20','50'],
+    ['205', 'http://dwz.cn/sg-pst-65','a050.gif','20','20','50']];
 smilies_array[7] = new Array();
 smilies_array[7][1] = [
     ['168', 'http://dwz.cn/sg-Ac-01','a013.gif','20','20','50'],
