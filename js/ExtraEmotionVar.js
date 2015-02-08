@@ -18,7 +18,7 @@ smilies_array[8][1] = [
     ['184', 'http://dwz.cn/sg-pst-04','a028.gif','20','20','50'],
     ['185', 'http://dwz.cn/sg-pst-05','a029.gif','20','20','50'],
     ['186', 'http://dwz.cn/sg-pst-06','a030.gif','20','20','50'],
-    ['187', 'http://dwz.cn/sg-pst-07','a031.gif','20','20','50'],
+    ['187', 'http://dwz.cn/sg-pst-x07','a031.gif','20','20','50'],
     ['188', 'http://dwz.cn/BtOWv','a033.gif','20','20','50'],
     ['189', 'http://dwz.cn/sg-pst-x09','a034.gif','20','20','50'],
     ['190', 'http://dwz.cn/sg-pst-10','a035.gif','20','20','50'],
@@ -76,7 +76,7 @@ smilies_array[8][2] = [
     ['201', 'http://dwz.cn/sg-pst-61','a046.gif','20','20','50'],
     ['202', 'http://dwz.cn/sg-pst-62','a047.gif','20','20','50'],
     ['203', 'http://dwz.cn/sg-pst-63','a048.gif','20','20','50'],
-    ['204', 'http://dwz.cn/sg-pst-64','a049.gif','20','20','50'],
+    ['204', 'http://dwz.cn/sg-pst-6-4','a049.gif','20','20','50'],
     ['205', 'http://dwz.cn/sg-pst-65','a050.gif','20','20','50']];
 smilies_array[7] = new Array();
 smilies_array[7][1] = [
