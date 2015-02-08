@@ -21,7 +21,7 @@ Hide the signatures of users in threads.
 
 Block all replies of users that users' level is under a value.
 
-Supply Acfun extra emotions.
+Supply Acfun and panst extra emotions.
 
 License
 =========
