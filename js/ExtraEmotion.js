@@ -94,22 +94,8 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 		s = smilies_array[type][page][i];
 		smilieimg = STATICURL + 'image/smiley/' + smilies_type['_' + type][1] + '/' + s[2];
 		var fastpost = s[1].replace(/'/, '\\\'');
-		var count;
-		if(page == 2) {
-			count = Number(k) + 41;
-		}
-		else {
-			count = k + 1;
-		}
 		if(type == 7) {
-			if(count == 42 || count == 43) {
-				smilieimg = "http://dwz.cn/sg-Ac-x" + count;
-			}
-			else {
-				smilieimg = "http://dwz.cn/sg-Ac-";
-				if (count < 10) smilieimg += "0";
-				smilieimg += count;
-			}
+			smilieimg = s[1];
 			fastpost = "[img]" + smilieimg + "[/img]";
 		}
 		img[k] = new Image();

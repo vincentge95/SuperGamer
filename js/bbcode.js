@@ -731,7 +731,7 @@ function smileycode(smileysrc, smileyid) {
             for (var page in smilies_array[typeid]) {
                 for (var i in smilies_array[typeid][page]) {
                     if (smilies_array[typeid][page][i][0] == smileyid) {
-                        return smilies_array[typeid][page][i][1];
+                        return "[img]" + smilies_array[typeid][page][i][1] + "[/img]";
                         break;
                     }
                 }
