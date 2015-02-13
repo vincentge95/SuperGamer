@@ -1,5 +1,5 @@
-
-
+// Check url and show pageAction.
+// Redirect js of bbs.sgamer.com to ext's.
 
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {

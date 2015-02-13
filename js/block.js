@@ -1,3 +1,7 @@
+// Show blacklist, add users and keywords, delete users and keywords.
+
+
+// Table to show blacklist.
 document.write("<table id = 'BlackList' class = 'table table-bordered'>");
 document.write("<tr>");
 document.write("<td>文本</td>");
@@ -21,15 +25,21 @@ if (localStorage.count) {
     }
 }
 document.write("</table>");
+
+// Add a new user or keyword depends on parameter 'type'.
 function addInfo(type) {
+    // Remove spaces at begining and end.
     var value = $.trim(document.getElementById("value").value);
+    // Reset input.
     document.getElementById("value").value = "";
+    // Keyword is not case-sensitive.
     if (type == "key") {
         value = value.toLowerCase();
     }
     if (value.length == 0) {
         return;
     }
+    // localStorage.count is null.
     if (!localStorage.count) {
         localStorage.count = 1;
     }
@@ -39,9 +49,11 @@ function addInfo(type) {
     var info = {value: value, type: type};
     info = JSON.stringify(info);
     var id = Number(localStorage.count) - 1;
+    // Write into localStorage of ext and bbs.sgamer.com.
     localStorage.setItem("BlackList" + id, info);
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('BlackList" + id + "', '" + info + "');"});
+    // Add a new line to show new information.
     var row = document.getElementById("BlackList").insertRow(Number(id) + 1);
     row.insertCell(0).innerHTML = value;
     if (type == "username") {
@@ -53,15 +65,21 @@ function addInfo(type) {
     row.insertCell(2).innerHTML = "<input type = 'button' value = '删除' class = 'deleteInfo btn btn-xs btn-danger'>";
 
 }
+
+// Delete a user or keyword. Parameter 'r' is the delete button in table. 
 function deleteInfo(r) {
     var row = r.parentNode.parentNode.rowIndex;
+    // Use following information to cover that deleted.
     for (var i = Number(row) - 1; i < Number(localStorage.count) - 1; i++) {
         localStorage.setItem("BlackList" + i, localStorage.getItem("BlackList" + (Number(i) + 1)));
     }
     var id = (Number(localStorage.count) - 1);
+    // Remove useless information in localStorage.
     localStorage.removeItem("BlackList" + id);
     localStorage.count = Number(localStorage.count) - 1;
+    // Remove the row delete in table.
     document.getElementById("BlackList").deleteRow(row);
+    // Rewrite localStorage in bbs.sgamer.com as before.
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
     for (var i = 0; i < localStorage.count; i++) {
         var temp = localStorage.getItem("BlackList" + i);

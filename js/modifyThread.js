@@ -1,12 +1,9 @@
-///////////////////////////////////////////////////////////////
-//                                                           //
-// block specific users' comments and replies in the thread  //
-// block specific users groups' replies                      //
-// hide medals and signatures                                //
-//                                                           //
-///////////////////////////////////////////////////////////////
+// Block specific users' comments and replies in the thread.
+// Block specific users groups' replies.                    
+// Hide medals and signatures.                             
 
 
+// url of user groups 1~6.
 var userGroupsUrl = [
     "home.php?mod=spacecp&ac=usergroup&gid=10",
     "home.php?mod=spacecp&ac=usergroup&gid=11",
@@ -22,13 +19,12 @@ var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
         if (mutation.addedNodes) {
             [].slice.call(mutation.addedNodes).forEach(function (node) {
-                /////////////////////////////////////
-                // remove specific users' comments //
-                /////////////////////////////////////
+                // Remove specific users' comments.
                 if (node.nodeName.toLowerCase() == "div") {
                     if (node.hasAttribute("class")) {
                         var className = node.getAttribute("class");
                         var curUsername = "-1.111";
+                        // Class name of comments would change after you change page.
                         if(className == "pstl xs1 cl") {
                             if(node.children.length == 2 && node.children[0].children.length == 2) {
                                 curUsername = node.children[0].children[1].innerHTML;
@@ -50,11 +46,8 @@ var observer = new MutationObserver(function (mutations) {
                         }
                     }
                 }
-
-                /////////////////////////////////////
-                // remove specific users' replies //
-                /////////////////////////////////////
-
+                
+                // Remove specific users' replies.
                 if(node.nodeName.toLowerCase() == "div") {
                     var curUsername = "-1.111";
                     if(node.hasAttribute("class") && node.getAttribute("class") == "authi" && node.children.length == 1) {
@@ -71,16 +64,15 @@ var observer = new MutationObserver(function (mutations) {
                     }
                 }
 
-                /////////////////////////////////////////
-                // block specific user groups' replies //
-                /////////////////////////////////////////
+                // Block specific user groups' replies.
                 if(localStorage.blockUserGroups == "true") {
                     if(node.nodeName.toLowerCase() == "a" && node.hasAttribute("href")) {
                         var href = node.getAttribute("href");
                         if(href.indexOf("home.php?mod=spacecp&ac=usergroup&gid") == 0) {
                             if(node.children.length > 0) {
+                                // Get reply id.
                                 var dom = $("a[onclick=\"setCopy(this.href, '帖子地址复制成功');return false;\"]", node.parentElement.parentElement.parentElement.parentElement).get(0)
-                                // do not remove the host of thread.`   1`1`1
+                                // Do not remove the host of thread.
                                 if(dom != undefined && dom.innerText != "楼主") {
                                     for (var i = 0; i <= localStorage.userGroups; i++) {
                                         if (href == userGroupsUrl[i]) {
@@ -92,10 +84,7 @@ var observer = new MutationObserver(function (mutations) {
                         }
                     }
                 }
-
-                /////////////////
-                // hide medals //
-                /////////////////
+                // Hide medals.
                 if(localStorage.hideMedals == "true") {
                     if (node.nodeName.toLowerCase() == "p") {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "md_ctrl") {
@@ -104,9 +93,7 @@ var observer = new MutationObserver(function (mutations) {
                     }
                 }
 
-                /////////////////////
-                // hide signatures //
-                /////////////////////
+                // Hide signatures.
                 if(localStorage.hideSignature == "true") {
                     if(node.nodeName.toLowerCase() == "div") {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){

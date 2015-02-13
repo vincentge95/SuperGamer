@@ -1,17 +1,13 @@
-//////////////////////////////////////////
-// copy user data from extension to web //
-//////////////////////////////////////////
+// Copy user data from extension to bbs.sgamer.com. 
+
 for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     var value = localStorage.getItem(key);
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('" + key + "', '" + value + "');"});
 }
 
+// Hide medals.
 
-
-/////////////////
-// hide medals //
-/////////////////
 var hideMedals = document.getElementById("hideMedals");
 var hideMedalsChecked = localStorage.getItem("hideMedals");
 if(hideMedalsChecked == "true") {
@@ -34,9 +30,9 @@ $("#hideMedals").click(function() {
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideMedals', " + temp + ");"});
 });
 
-////////////////////
-// hide signature //
-////////////////////
+
+// Hide signature.
+
 var hideSignature = document.getElementById("hideSignature");
 var hideSignatureChecked = localStorage.getItem("hideSignature");
 if(hideSignatureChecked == "true") {
@@ -59,9 +55,8 @@ $("#hideSignature").click(function() {
     chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideSignature', " + temp + ");"});
 });
 
-///////////////////////
-// block user groups //
-///////////////////////
+// Block specific user groups.
+
 var blockUserGroups = document.getElementById("blockUserGroups");
 var blockUserGroupsChecked = localStorage.getItem("blockUserGroups");
 var userGroups = document.getElementById("userGroups");
@@ -78,7 +73,7 @@ else {
     blockUserGroups.checked = false;
     userGroups.disabled = true;
 }
-// checked will modify automatically
+// blockUserGroups.checked will modify automatically.
 $("#blockUserGroups").click(function() {
     var temp;
     if(blockUserGroups.checked) {
