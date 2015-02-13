@@ -7,11 +7,11 @@ javascript + jQuery + bootstrap + discuz
 
 Installation
 ==========
-https://chrome.google.com/webstore/detail/supergamer/knhlcbpfhhmeijoeiipjgknjbjenddoa
+You can add this extension from -[Chrome Webstore](https://chrome.google.com/webstore/detail/supergamer/knhlcbpfhhmeijoeiipjgknjbjenddoa) or download the release code and load it as develeping extension.
 
 Functions
 ==========
-Block the specific users' threads or replies.
+Block the specific users' threads and replies.
 
 Block the threads that have specific words.
 
@@ -21,7 +21,7 @@ Hide the signatures of users in threads.
 
 Block all replies of users that users' level is under a value.
 
-Supply Acfun and panst extra emotions.
+Add Acfun and Panst extra emotions.
 
 License
 =========
