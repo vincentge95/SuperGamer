@@ -45,7 +45,8 @@
     "tabs",
     "webRequest",
     "webRequestBlocking",
-    "http://bbs.sgamer.com/"
+    "http://bbs.sgamer.com/",
+    "http://www.huya.com/"
   ],
   "web_accessible_resources": [
     "js/ExtraEmotionVar.js",
