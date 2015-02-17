@@ -49,8 +49,9 @@ chrome.webRequest.onBeforeRequest.addListener(
 // Return localStorage to the querying page.
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+        //console.log(request.method);
         if (request.method == "getLocalStorage")
-            sendResponse(localStorage);
+            sendResponse(localStorage.getItem(request.key));
     }
 );
 
