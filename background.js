@@ -55,21 +55,6 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
-/*
-chrome.webRequest.onBeforeSendHeaders.addListener(
-    function(details) {
-        for (var i = 0; i < details.requestHeaders.length; ++i) {
-            if (details.requestHeaders[i].name === 'Cookie') {
-                details.requestHeaders.splice(i, 1);
-                break;
-            }
-        }
-        return {requestHeaders: details.requestHeaders};
-    },
-    {urls: ["http://c1.web.yystatic.com/*"]},
-    ["blocking", "requestHeaders"]
-);
-*/
 // Show pageAction.
 function checkForValidUrl(tabId, changeInfo, tab) {
     if (tab.url.indexOf("http://bbs.sgamer.com/") == 0) {
