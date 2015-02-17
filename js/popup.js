@@ -1,13 +1,4 @@
-// Copy user data from extension to bbs.sgamer.com. 
-
-for (var i = 0; i < localStorage.length; i++) {
-    var key = localStorage.key(i);
-    var value = localStorage.getItem(key);
-    chrome.tabs.executeScript(null, {code: "localStorage.setItem('" + key + "', '" + value + "');"});
-}
-
 // Hide medals.
-
 var hideMedals = document.getElementById("hideMedals");
 var hideMedalsChecked = localStorage.getItem("hideMedals");
 if(hideMedalsChecked == "true") {
@@ -31,7 +22,6 @@ $("#hideMedals").click(function() {
 
 
 // Hide signature.
-
 var hideSignature = document.getElementById("hideSignature");
 var hideSignatureChecked = localStorage.getItem("hideSignature");
 if(hideSignatureChecked == "true") {
@@ -54,7 +44,6 @@ $("#hideSignature").click(function() {
 });
 
 // Block specific user groups.
-
 var blockUserGroups = document.getElementById("blockUserGroups");
 var blockUserGroupsChecked = localStorage.getItem("blockUserGroups");
 var userGroups = document.getElementById("userGroups");
