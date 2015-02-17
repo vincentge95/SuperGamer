@@ -38,7 +38,7 @@
     }
   ],
   "page_action": {
-    "default_popup": "popup.html",
+    "default_popup": "html/popup.html",
     "default_icon": "icon19.png"
   },
   "permissions": [
