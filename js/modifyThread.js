@@ -2,6 +2,31 @@
 // Block specific users groups' replies.                    
 // Hide medals and signatures.                             
 
+// Get all block information from ext's localStorage.
+var blockInfo = new Array();
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "count"}, function (count) {
+    for(var i = 0; i < count; i++) {
+        chrome.runtime.sendMessage({method: "getLocalStorage", key: "BlackList" + i}, function (item) {
+            blockInfo.push(item);
+        });
+    }
+});
+var blockUserGroups;
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "blockUserGroups"}, function (item) {
+    blockUserGroups = item;
+});
+var userGroups;
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "userGroups"}, function (item) {
+    userGroups = item;
+});
+var hideMedals;
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "hideMedals"}, function (item) {
+    hideMedals = item;
+});
+var hideSignature;
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "hideSignature"}, function (item) {
+    hideSignature = item;
+});
 
 // url of user groups 1~6.
 var userGroupsUrl = [
@@ -36,8 +61,8 @@ var observer = new MutationObserver(function (mutations) {
                             }
                         }
                         if(curUsername != "-1.111") {
-                            for (var i = 0; i < localStorage.count; i++) {
-                                var item = JSON.parse(localStorage.getItem("BlackList" + i));
+                            for (var i = 0; i < blockInfo.length; i++) {
+                                var item = JSON.parse(blockInfo[i]);
                                 if (item.type == "username" && item.value == curUsername) {
                                     $(node).hide();
                                     break;
@@ -54,8 +79,8 @@ var observer = new MutationObserver(function (mutations) {
                         curUsername = node.children[0].innerHTML;
                     }
                     if(curUsername != "-1.111") {
-                        for (var i = 0; i < localStorage.count; i++) {
-                            var item = JSON.parse(localStorage.getItem("BlackList" + i));
+                        for (var i = 0; i < blockInfo.length; i++) {
+                            var item = JSON.parse(blockInfo[i]);
                             if (item.type == "username" && item.value == curUsername) {
                                 $(node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).hide();;
                                 break;
@@ -65,7 +90,7 @@ var observer = new MutationObserver(function (mutations) {
                 }
 
                 // Block specific user groups' replies.
-                if(localStorage.blockUserGroups == "true") {
+                if(blockUserGroups == "true") {
                     if(node.nodeName.toLowerCase() == "a" && node.hasAttribute("href")) {
                         var href = node.getAttribute("href");
                         if(href.indexOf("home.php?mod=spacecp&ac=usergroup&gid") == 0) {
@@ -74,7 +99,7 @@ var observer = new MutationObserver(function (mutations) {
                                 var dom = $("a[onclick=\"setCopy(this.href, '帖子地址复制成功');return false;\"]", node.parentElement.parentElement.parentElement.parentElement).get(0)
                                 // Do not remove the host of thread.
                                 if(dom != undefined && dom.innerText != "楼主") {
-                                    for (var i = 0; i <= localStorage.userGroups; i++) {
+                                    for (var i = 0; i <= userGroups; i++) {
                                         if (href == userGroupsUrl[i]) {
                                             $(node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).hide();
                                         }
@@ -85,7 +110,7 @@ var observer = new MutationObserver(function (mutations) {
                     }
                 }
                 // Hide medals.
-                if(localStorage.hideMedals == "true") {
+                if(hideMedals == "true") {
                     if (node.nodeName.toLowerCase() == "p") {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "md_ctrl") {
                             $(node).hide();
@@ -94,7 +119,7 @@ var observer = new MutationObserver(function (mutations) {
                 }
 
                 // Hide signatures.
-                if(localStorage.hideSignature == "true") {
+                if(hideSignature == "true") {
                     if(node.nodeName.toLowerCase() == "div") {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
                             $(node).hide();
