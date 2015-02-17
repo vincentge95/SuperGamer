@@ -27,7 +27,6 @@ $("#hideMedals").click(function() {
         hideMedals.setAttribute("checked", "");
     }
     localStorage.setItem("hideMedals", temp);
-    chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideMedals', " + temp + ");"});
 });
 
 
@@ -52,7 +51,6 @@ $("#hideSignature").click(function() {
         hideSignature.setAttribute("checked", "");
     }
     localStorage.setItem("hideSignature", temp);
-    chrome.tabs.executeScript(null, {code: "localStorage.setItem('hideSignature', " + temp + ");"});
 });
 
 // Block specific user groups.
@@ -85,10 +83,8 @@ $("#blockUserGroups").click(function() {
         userGroups.disabled = true;
     }
     localStorage.setItem("blockUserGroups", temp);
-    chrome.tabs.executeScript(null, {code: "localStorage.setItem('blockUserGroups', " + temp + ");"});
 });
 
 $("#userGroups").change(function() {
     localStorage.setItem("userGroups", userGroups.selectedIndex);
-    chrome.tabs.executeScript(null, {code: "localStorage.setItem('userGroups', " + userGroups.selectedIndex + ");"});
 });
