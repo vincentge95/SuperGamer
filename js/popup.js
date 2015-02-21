@@ -48,7 +48,6 @@ var blockUserGroups = document.getElementById("blockUserGroups");
 var blockUserGroupsChecked = localStorage.getItem("blockUserGroups");
 var userGroups = document.getElementById("userGroups");
 var userGroupsSelected = localStorage.getItem("userGroups");
-// null == 0
 if(Number(userGroupsSelected) >= 0 && Number(userGroupsSelected) <= 6) {
     $("option", userGroups)[Number(userGroupsSelected)].selected = true;
 }
@@ -76,4 +75,26 @@ $("#blockUserGroups").click(function() {
 
 $("#userGroups").change(function() {
     localStorage.setItem("userGroups", userGroups.selectedIndex);
+});
+
+// Hide zhanqitv banner at forum head.
+var hideZhanqiBanner = document.getElementById("hideZhanqiBanner");
+var hideZhanqiBannerChecked = localStorage.getItem("hideZhanqiBanner");
+if(hideZhanqiBannerChecked == "true") {
+    hideZhanqiBanner.setAttribute("checked", "");
+}
+else {
+    hideZhanqiBanner.removeAttribute("checked");
+}
+$("#hideZhanqiBanner").click(function() {
+    var temp;
+    if(hideZhanqiBanner.hasAttribute("checked")) {
+        temp = "false";
+        hideZhanqiBanner.removeAttribute("checked");
+    }
+    else {
+        temp = "true";
+        hideZhanqiBanner.setAttribute("checked", "");
+    }
+    localStorage.setItem("hideZhanqiBanner", temp);
 });

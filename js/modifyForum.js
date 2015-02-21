@@ -9,6 +9,10 @@ chrome.runtime.sendMessage({method: "getLocalStorage", key: "count"}, function (
         });
     }
 });
+var hideZhanqiBanner;
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "hideZhanqiBanner"}, function (item) {
+    hideZhanqiBanner = item;
+});
 // Handle DOMs.
 var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
@@ -36,6 +40,15 @@ var observer = new MutationObserver(function (mutations) {
                                     break;
                                 }
                             }
+                        }
+                    }
+                }
+                // Hide Zhanqitv banner at forum head.
+                if(hideZhanqiBanner == "true") {
+                    if (node.nodeName.toLowerCase() == "iframe") {
+                        var src = node.getAttribute("src");
+                        if (src.indexOf("zhanqi.tv") >= 0) {
+                            $(node).hide();
                         }
                     }
                 }
