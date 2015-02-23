@@ -1,18 +1,5 @@
 // Block specific users' threads and the threads that have specific keywords.
 
-// Get all block information from ext's localStorage.
-var blockInfo = new Array();
-chrome.runtime.sendMessage({method: "getLocalStorage", key: "count"}, function (count) {
-    for(var i = 0; i < count; i++) {
-        chrome.runtime.sendMessage({method: "getLocalStorage", key: "BlackList" + i}, function (item) {
-            blockInfo.push(item);
-        });
-    }
-});
-var hideZhanqiBanner;
-chrome.runtime.sendMessage({method: "getLocalStorage", key: "hideZhanqiBanner"}, function (item) {
-    hideZhanqiBanner = item;
-});
 // Handle DOMs.
 var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
@@ -24,8 +11,8 @@ var observer = new MutationObserver(function (mutations) {
                         // Get topic and username of the thread.
                         var curTopic = $(".s.xst", node).get(0).innerHTML;
                         var curUsername = $("cite", node).get(0).children[0].innerHTML;
-                        for (var i = 0; i < blockInfo.length; i++) {
-                            var item = JSON.parse(blockInfo[i]);
+                        for (var i = 0; i < localStorage.count; i++) {
+                            var item = JSON.parse(localStorage.getItem("BlackList" + i));
                             if (item.type == "username") {
                                 // If the thread is posted by specific users.
                                 if (item.value == curUsername) {
@@ -44,7 +31,7 @@ var observer = new MutationObserver(function (mutations) {
                     }
                 }
                 // Hide Zhanqitv banner at forum head.
-                if(hideZhanqiBanner == "true") {
+                if(localStorage.hideZhanqiBanner == "true") {
                     if (node.nodeName.toLowerCase() == "iframe") {
                         var src = node.getAttribute("src");
                         if (src.indexOf("zhanqi.tv") >= 0) {

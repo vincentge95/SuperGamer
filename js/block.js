@@ -51,6 +51,8 @@ function addInfo(type) {
     var id = Number(localStorage.count) - 1;
     // Write into localStorage of ext and bbs.sgamer.com.
     localStorage.setItem("BlackList" + id, info);
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('BlackList" + id + "', '" + info + "');"});;
     // Add a new line to show new information.
     var row = document.getElementById("BlackList").insertRow(Number(id) + 1);
     row.insertCell(0).innerHTML = value;
@@ -77,6 +79,12 @@ function deleteInfo(r) {
     localStorage.count = Number(localStorage.count) - 1;
     // Remove the row delete in table.
     document.getElementById("BlackList").deleteRow(row);
+    // Rewrite localStorage in bbs.sgamer.com as before.
+    chrome.tabs.executeScript(null, {code: "localStorage.setItem('count', " + localStorage.count + ");"});
+        for (var i = 0; i < localStorage.count; i++) {
+            var temp = localStorage.getItem("BlackList" + i);
+            chrome.tabs.executeScript(null, {code: "localStorage.setItem('BlackList" + i + "', '" + temp + "');"});
+    }
 }
 function addUser() {
     addInfo("username");
