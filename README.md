@@ -19,9 +19,13 @@ Hide the medals of users in threads.
 
 Hide the signatures of users in threads.
 
+Hide zhanqitv banners at forum heads.
+
 Block all replies of users that users' level is under a value.
 
 Add Acfun and Panst extra emotions.
+
+Add huya.com stream web page fullscreen.
 
 License
 =========
