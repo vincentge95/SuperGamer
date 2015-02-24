@@ -73,7 +73,7 @@ var observer = new MutationObserver(function (mutations) {
                                 var dom = $("a[onclick=\"setCopy(this.href, '帖子地址复制成功');return false;\"]", node.parentElement.parentElement.parentElement.parentElement).get(0)
                                 // Do not remove the host of thread.
                                 if(dom != undefined && dom.innerText != "楼主") {
-                                    for (var i = 0; i <= userGroups; i++) {
+                                    for (var i = 0; i <= localStorage.userGroups; i++) {
                                         if (href == userGroupsUrl[i]) {
                                             $(node.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).hide();
                                         }
