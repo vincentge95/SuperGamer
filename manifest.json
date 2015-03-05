@@ -51,7 +51,8 @@
   "web_accessible_resources": [
     "js/ExtraEmotionVar.js",
     "js/ExtraEmotion.js",
-    "js/bbcode.js"
+    "js/bbcode.js",
+    "js/editor.js"
   ],
   "manifest_version": 2
 }

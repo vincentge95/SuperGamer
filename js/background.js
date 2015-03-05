@@ -43,8 +43,26 @@ chrome.webRequest.onBeforeRequest.addListener(
             }
             return {redirectUrl: "chrome-extension://" + extensionId + "/js/bbcode.js" + param};
         }
+        // Redirect js of bbs.sgamer.com to ext's.
+        if(details.url.indexOf("http://bbs.sgamer.com/static/js/editor.js") == 0) {
+            var param = "";
+            for(var i = 0; i < details.url.length; i++) {
+                if(details.url[i] == '?') {
+                    for(var j = i; j < details.url.length; j++) {
+                        param += details.url[j];
+                    }
+                    break;
+                }
+            }
+            return {redirectUrl: "chrome-extension://" + extensionId + "/js/editor.js" + param};
+        }
     },
-    {urls: ["http://bbs.sgamer.com/data/cache/common_smilies_var.js*", "http://bbs.sgamer.com/static/js/smilies.js*", "http://bbs.sgamer.com/static/js/bbcode.js*"]},
+    {urls: [
+        "http://bbs.sgamer.com/data/cache/common_smilies_var.js*",
+        "http://bbs.sgamer.com/static/js/smilies.js*",
+        "http://bbs.sgamer.com/static/js/bbcode.js*",
+        "http://bbs.sgamer.com/static/js/editor.js*"
+    ]},
     ["blocking"]
 );
 

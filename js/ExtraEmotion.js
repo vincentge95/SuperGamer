@@ -100,7 +100,7 @@ function smilies_switch(id, smcols, type, page, seditorkey) {
 		}
 		img[k] = new Image();
 		img[k].src = smilieimg;
-		smiliesdata += s && s[0] ? '<td onmouseover="smilies_preview(\'' + seditorkey + '\', \'' + id + '\', this, ' + s[5] + ')" onclick="' + (typeof wysiwyg != 'undefined' ? 'insertSmiley(' + s[0] + ')': 'seditor_insertunit(\'' + seditorkey + '\', \'' + fastpost + '\')') +
+		smiliesdata += s && s[0] ? '<td onmouseover="smilies_preview(\'' + seditorkey + '\', \'' + id + '\', this, ' + s[5] + ')" onclick="' + (typeof wysiwyg != 'undefined' ? 'insertSmiley(' + "'" + s[0] + "'" + ')': 'seditor_insertunit(\'' + seditorkey + '\', \'' + fastpost + '\')') +
 			'" id="' + seditorkey + 'smilie_' + s[0] + '_td"><img id="smilie_' + s[0] + '" width="' + s[3] +'" height="' + s[4] +'" src="' + smilieimg + '" alt="' + s[1] + '" />' : '<td>';
 		j++;k++;
 	}

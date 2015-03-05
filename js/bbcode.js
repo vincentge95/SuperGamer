@@ -66,7 +66,7 @@ function bbcode2html(str) {
 
     if (!fetchCheckbox('smileyoff') && allowsmilies) {
         if (typeof smilies_type == 'object') {
-            for (var typeid in smilies_array) {
+            for (var typeid = 0; typeid < 7; typeid++) {
                 for (var page in smilies_array[typeid]) {
                     for (var i in smilies_array[typeid][page]) {
                         re = new RegExp(preg_quote(smilies_array[typeid][page][i][1]), "g");
