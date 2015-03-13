@@ -1,4 +1,5 @@
 // Block specific users' threads and the threads that have specific keywords.
+// Add additional spaces at the end of submitting post.
 
 // Handle DOMs.
 var observer = new MutationObserver(function (mutations) {
@@ -37,6 +38,15 @@ var observer = new MutationObserver(function (mutations) {
                         if (src.indexOf("zhanqi.tv") >= 0) {
                             $(node).hide();
                         }
+                    }
+                }
+                // Add additional spaces;
+                if(node.nodeName.toLowerCase() == "button") {
+                    if(node.hasAttribute("id") && node.getAttribute("id") == "fastpostsubmit") {
+                        $(node).click(function() {
+                            var post = document.getElementById("fastpostmessage");
+                            post.value += "                     ";
+                        });
                     }
                 }
             });

@@ -1,6 +1,7 @@
 // Block specific users' comments and replies in the thread.
 // Block specific users groups' replies.                    
 // Hide medals and signatures.
+// Add additional spaces at the end of submitting post.
 
 // url of user groups 1~6.
 var userGroupsUrl = [
@@ -98,6 +99,15 @@ var observer = new MutationObserver(function (mutations) {
                         if (node.hasAttribute("class") && node.getAttribute("class") == "sign"){
                             $(node).hide();
                         }
+                    }
+                }
+                // Add additional spaces;
+                if(node.nodeName.toLowerCase() == "button") {
+                    if(node.hasAttribute("id") && node.getAttribute("id") == "fastpostsubmit") {
+                        $(node).click(function() {
+                            var post = document.getElementById("fastpostmessage");
+                            post.value += "                     ";
+                        });
                     }
                 }
             });
