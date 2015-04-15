@@ -27,14 +27,6 @@
         "js/ModifyThread.js"
       ],
       "run_at": "document_start"
-    },
-    {
-      "matches": ["http://www.huya.com/*"],
-      "js": [
-        "js/jquery.js",
-        "js/huya.js"
-      ],
-      "run_at": "document_end"
     }
   ],
   "page_action": {
@@ -45,8 +37,7 @@
     "tabs",
     "webRequest",
     "webRequestBlocking",
-    "http://bbs.sgamer.com/*",
-    "http://www.huya.com/*"
+    "http://bbs.sgamer.com/*"
   ],
   "web_accessible_resources": [
     "js/ExtraEmotionVar.js",
