@@ -3,6 +3,22 @@
 // Hide medals and signatures.
 // Add additional spaces at the end of submitting post.
 
+// count bytes of str
+function getByteCount(str) {
+    var ret = 0, len = str.length;
+    for(var i = 0; i < len; i++) {
+        if(str.charCodeAt(i) > 255) {
+            ret += 2;
+        }
+        else {
+            ret++;
+        }
+    }
+    return ret;
+}
+
+
+
 // url of user groups 1~6.
 var userGroupsUrl = [
     "home.php?mod=spacecp&ac=usergroup&gid=10",
@@ -106,7 +122,10 @@ var observer = new MutationObserver(function (mutations) {
                     if(node.hasAttribute("id") && node.getAttribute("id") == "fastpostsubmit") {
                         $(node).click(function() {
                             var post = document.getElementById("fastpostmessage");
-                            post.value += "                     ";
+                            var count = 10 - getByteCount(post.value);
+                            for(var i = 0; i < count; i++) {
+                                post.value += " ";
+                            }
                         });
                     }
                 }

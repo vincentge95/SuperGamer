@@ -1,6 +1,22 @@
 // Block specific users' threads and the threads that have specific keywords.
 // Add additional spaces at the end of submitting post.
 
+
+
+// count bytes of str
+function getByteCount(str) {
+    var ret = 0, len = str.length;
+    for(var i = 0; i < len; i++) {
+        if(str.charCodeAt(i) > 255) {
+            ret += 2;
+        }
+        else {
+            ret++;
+        }
+    }
+    return ret;
+}
+
 // Handle DOMs.
 var observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
@@ -45,7 +61,10 @@ var observer = new MutationObserver(function (mutations) {
                     if(node.hasAttribute("id") && node.getAttribute("id") == "fastpostsubmit") {
                         $(node).click(function() {
                             var post = document.getElementById("fastpostmessage");
-                            post.value += "                     ";
+                            var count = 10 - getByteCount(post.value);
+                            for(var i = 0; i < count; i++) {
+                                post.value += " ";
+                            }
                         });
                     }
                 }
