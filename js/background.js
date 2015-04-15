@@ -1,59 +1,41 @@
 
 
 
+function getParam(link)
+{
+    var param = "";
+    for(var i = 0; i < link.length; i++) {
+        if(link[i] == '?') {
+            for(var j = i; j < link.length; j++) {
+                param += link[j];
+            }
+            break;
+        }
+    }
+    return param;
+}
+
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         // Redirect js of bbs.sgamer.com to ext's.
         var extensionId = chrome.runtime.id;
         if(details.url.indexOf("http://bbs.sgamer.com/data/cache/common_smilies_var.js") == 0) {
-            var param = "";
-            for(var i = 0; i < details.url.length; i++) {
-                if(details.url[i] == '?') {
-                    for(var j = i; j < details.url.length; j++) {
-                        param += details.url[j];
-                    }
-                    break;
-                }
-            }
+            var param = getParam(details.url);
             return {redirectUrl: "chrome-extension://" + extensionId + "/js/ExtraEmotionVar.js" + param};
         }
         // Redirect js of bbs.sgamer.com to ext's.
         if(details.url.indexOf("http://bbs.sgamer.com/static/js/smilies.js") == 0) {
-            var param = "";
-            for(var i = 0; i < details.url.length; i++) {
-                if(details.url[i] == '?') {
-                    for(var j = i; j < details.url.length; j++) {
-                        param += details.url[j];
-                    }
-                    break;
-                }
-            }
+            var param = getParam(details.url);
             return {redirectUrl: "chrome-extension://" + extensionId + "/js/ExtraEmotion.js" + param};
         }
         // Redirect js of bbs.sgamer.com to ext's.
         if(details.url.indexOf("http://bbs.sgamer.com/static/js/bbcode.js") == 0) {
-            var param = "";
-            for(var i = 0; i < details.url.length; i++) {
-                if(details.url[i] == '?') {
-                    for(var j = i; j < details.url.length; j++) {
-                        param += details.url[j];
-                    }
-                    break;
-                }
-            }
+            var param = getParam(details.url);
             return {redirectUrl: "chrome-extension://" + extensionId + "/js/bbcode.js" + param};
         }
         // Redirect js of bbs.sgamer.com to ext's.
         if(details.url.indexOf("http://bbs.sgamer.com/static/js/editor.js") == 0) {
-            var param = "";
-            for(var i = 0; i < details.url.length; i++) {
-                if(details.url[i] == '?') {
-                    for(var j = i; j < details.url.length; j++) {
-                        param += details.url[j];
-                    }
-                    break;
-                }
-            }
+            var param = getParam(details.url);
             return {redirectUrl: "chrome-extension://" + extensionId + "/js/editor.js" + param};
         }
     },
