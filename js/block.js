@@ -101,3 +101,4 @@ $("#addKey").click(function () {
 $("#BlackList").on("click", ".deleteInfo", function () {
     deleteInfo(this);
 });
+
